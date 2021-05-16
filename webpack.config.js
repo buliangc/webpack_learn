@@ -19,8 +19,29 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                use: [ 'style-loader', 'css-loader' ]
+                test: /\.(ttf|woff|woff2)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[ext]",
+                        outputPath: "fonts/"
+                    }
+                }
+            },
+            {
+                test: /\.(css|scss)$/,
+                use: [ 
+                    'style-loader', 
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,
+                            // modules: true,
+                        }
+                    },
+                    'sass-loader',
+                    'postcss-loader'
+                ]
             },
         ]
     },

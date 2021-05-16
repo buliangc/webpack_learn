@@ -15,3 +15,20 @@
 mode 配置模式 
 production模式 会默认压缩代码并进行其他优化
 development模式 不会压缩代码
+loader的先后顺序 自下而上 自右而坐
+针对css样式
+style-loader css-loader 
+css负责样式打包 style负责将样式挂载到页面上
+针对scss样式
+sass-loader
+sass对样式进行翻译，转换成css
+自动添加厂商前缀
+postcss-loader
+eg: transform: translate(100px,100px); --> -webkit-transform: translate(100px,100px);
+
+css-loader中的importLoaders作用是在css样式中，再进行css样式的引用, @import './xxx.css' 层叠样式表
+modules: true 模块化的CSS，指当前的css只在当前的css有效
+
+# 使用webpack打包字体样式
+iconfont 使用file-loader
+

@@ -25,10 +25,11 @@ sass对样式进行翻译，转换成css
 自动添加厂商前缀
 postcss-loader
 eg: transform: translate(100px,100px); --> -webkit-transform: translate(100px,100px);
+在postcss-config.js中使用autoprefixer[有问题:网页上无法显示-webkit厂商前缀]
 
 css-loader中的importLoaders作用是在css样式中，再进行css样式的引用, @import './xxx.css' 层叠样式表
 modules: true 模块化的CSS，指当前的css只在当前的css有效
 
 # 使用webpack打包字体样式
-iconfont 使用file-loader
-
+在src的fonts目录下引入当前的iconfont字体文件。
+iconfont 使用file-loader 进行打包

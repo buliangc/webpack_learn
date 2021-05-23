@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "bundle": "webpack"
+    "bundle": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server",
+    "server": "node server.js"
   },
   "author": "buliangc",
   "license": "ISC",
   "keywords": [],
   "devDependencies": {
     "autoprefixer": "^10.2.5",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.4",
+    "express": "^4.17.1",
     "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
     "node-sass": "^6.0.0",
     "postcss": "^8.2.15",
     "postcss-loader": "^5.3.0",
@@ -20,7 +26,9 @@
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
     "webpack": "^5.36.2",
-    "webpack-cli": "^4.7.0"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^4.3.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "main": "index.js",
   "dependencies": {},

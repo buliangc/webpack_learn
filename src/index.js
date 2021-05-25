@@ -10,6 +10,11 @@ import Header from './header'
 import CreateAvarar from './createAvatar.js'
 import './style.css'
 import picture from '../assets/my_word.jpg' 
+// import "@babel/polyfill"; 可省略
+import React, {Component} from 'react';
+import ReactDom from 'react-dom';
+
+import { add, minus } from './math';
 
 var root = document.getElementById("root");
 // Header();   // new Header();
@@ -37,5 +42,30 @@ btn.onclick = function() {
     document.body.append(div);
 }
 Content();
+
+const arr = [
+    new Promise( () => {} ),
+    new Promise( () => {} ),
+]
+
+arr.map( (item, index) => {
+    console.log(item);
+})
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {  }
+    }
+    render() { 
+        return ( 
+            <h3>这是一个React组件</h3>
+         );
+    }
+}
+
+ReactDom.render(<App />, document.getElementById('root'))
+
+add(3,5)
 // new Content();
 // new Sidebar();

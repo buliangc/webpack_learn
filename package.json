@@ -1,5 +1,6 @@
 {
   "name": "webpack_demo",
+  "sideEffects": false,
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -12,7 +13,12 @@
   "license": "ISC",
   "keywords": [],
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
     "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.4",
     "express": "^4.17.1",
@@ -31,6 +37,12 @@
     "webpack-dev-server": "^3.11.2"
   },
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.14.0",
+    "@babel/runtime-corejs2": "^7.14.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "description": ""
 }

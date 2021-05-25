@@ -52,7 +52,7 @@ content: "\e610";
 content: "\e742";
 }
   
-div:nth-of-type(odd) {
+div:nth-of-type(even) {
     background: blue;
 }
   

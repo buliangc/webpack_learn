@@ -21,6 +21,11 @@ module.exports = {
     },
     module: {
         rules: [
+            { 
+                test: /\.js$/, 
+                exclude: /node_modules/, // 不包括node_modules中的js文件
+                loader: "babel-loader" ,
+            },
             {
                 test: /\.(jpg|png|gif)$/,
                 use: {
@@ -71,5 +76,8 @@ module.exports = {
     }),
         new CleanWebpackPlugin(),
         // new HotModuleReplacementPlugin()    // 控制热模块加载
-    ]
+    ],
+    optimization: {
+        usedExports: true
+    }
 }

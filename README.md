@@ -9,12 +9,16 @@
 
 # webpack-cli的作用是使得在命令行中可以使用webpack 
 
+
 # webpack.config.js
 入口文件 entry
 出口文件
-mode 配置模式 
-production模式 会默认压缩代码并进行其他优化
-development模式 不会压缩代码
+
+# mode 配置模式 
+production模式 生产环境 会默认压缩代码并进行其他优化
+development模式 开发环境 不会压缩代码
+
+# loader
 loader的先后顺序 自下而上 自右而坐
 针对css样式
 style-loader css-loader 
@@ -71,5 +75,21 @@ sourceMap 它是一个映射关系, 它知道dist目录下的main.js文件的96�
 
 # 使用Hot Module Replacement热模块更新   
 hot: true, hotOnly: true 并使用插件HotModuleReplacementPlugin 即开启HMR功能
-在devServer中开启Hot Module Replacement热模块功能。hotOnly:true 功能即使HMR功能不生效，浏览器也不自动刷新
+在devServer中 => hot: true开启Hot Module Replacement热模块功能。hotOnly:true => 功能即使HMR功能不生效，浏览器也不自动刷新
 适合样式调试 页面不会自动刷新 方便调试CSS
+
+# 使用babel 将ES6的语法打包成为ES5的语法 
+光转化成ES5的代码不够,还需要将ES6的方法和变量进行注入。这就需要使用polyfill, 但polyfill生成的main.js会十分的大,此时就需要使用里面的useBuiltIns属性,来进行按需加载,只会注入用到的包。以上均为业务代码的使用场景;在生成第三方模块与UI组件的时候, 我们生成的是一个库,我们不希望babel去污染全局环境。我们就需要使用babel-runtime
+使用babel/polyfill 来对ES6的语法 弥补低版本浏览器的问题 
+babel的presets属性中的useBuiltIns: 当做polyfill填充的时候,不是将低版本中的特性都加进来,而是根据业务代码中用到的高级语法规则,按需进行添加。
+属性中的target: 按照target中的要求进行babel配置 chrome 67以上的高版本浏览器支持新的语法特性
+如果仅进行业务代码的编写, 只需要配置presets,并引入polyfill即可
+
+# 实现对React框架代码的打包
+在babel.config.json中进行配置 "@babel/preset-react" 使babel支持对react的解析。
+
+# Tree Shaking 摇树
+当我引入一个模块的时候,我不引入模块中所有的代码,而是仅引入使用的代码部分
+tree shaking 只支持ES Module引入方式 静态引入
+CommonJS是一个动态引入的方式, tree shaking 不支持;
+在packjsonz.config中进行配置 sideEffects: false 意思tree shaking对所有的模块一视同仁,都进行tree shaking ,就是没有特殊需要处理的东西,

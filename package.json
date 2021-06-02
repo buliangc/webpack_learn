@@ -41,6 +41,7 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/runtime": "^7.14.0",
     "@babel/runtime-corejs2": "^7.14.0",
+    "core-js": "^2.6.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

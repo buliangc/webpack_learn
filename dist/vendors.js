@@ -6,7 +6,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-(self["webpackChunkwebpack_demo"] = self["webpackChunkwebpack_demo"] || []).push([["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_cssW-a028c4"],{
+(self["webpackChunkwebpack_demo"] = self["webpackChunkwebpack_demo"] || []).push([["defaultVendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runti-6dc524"],{
 
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /*!*****************************************************!*\

@@ -67,7 +67,27 @@ module.exports = {
     ],
     optimization: {
         splitChunks: {
-            chunks: "all"
+            chunks: 'all',
+            minSize: 20000, // 20KB大小
+            minRemainingSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 30,
+            maxInitialRequests: 30,
+            enforceSizeThreshold: 50000,
+            name: true,
+            cacheGroups: {
+                defaultVendors: {   
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    reuseExistingChunk: true,
+                    filename: 'vendors.js',
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            },
         }
     }
 

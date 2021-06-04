@@ -133,3 +133,8 @@ main.js
 3. 对import _ from 'lodash 同步加载的代码, 会直接去分析代码,将该提取的部分放在vendors.js里面。
 对异步加载的代码,import("lodash").then(({ default: _ }) => { }) 无需做任何配置, 直接会分配到0.js中。
 [异步代码使用babel]：plugins中配置dynamic-import-webpack
+chunk : all, async 和 initial 全部, 异步, 同步 
+minsize: 引入的库的最小值, 大于xxx, 则做代码分割
+//cacheGroups 判断规则
+同步逻辑的代码分割
+在splitChunks中,chunks:'all',表示对同步代码也打包; 接下来到cacheGroups的vendors,里面的test会检测引入的库是否在node_modules中。于是webpack就会单独将其打包到vendor组里面

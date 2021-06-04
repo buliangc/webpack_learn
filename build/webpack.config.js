@@ -12,8 +12,9 @@ module.exports = {
         main: "./src/index.js",
     },
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,     // 告诉服务器内容的来源。仅在需要提供静态文件时才进行配置。
+        // contentBase是用来指定被访问html页面所在目录的。
+        contentBase: path.join(__dirname, 'dist'), // 告诉服务器内容的来源。仅在需要提供静态文件时才进行配置
+        compress: true,    // 启用gzip 压缩：
         open: true,     // 自动开启本地服务浏览器
         port: 9000,
         // hot: true,
@@ -47,25 +48,32 @@ module.exports = {
                     }
                 }
             },
+            // {
+            //     test: /\.(css|scss)$/,
+            //     use: [ 
+            //         'style-loader', 
+            //         {
+            //             loader: 'css-loader',
+            //             options: {
+            //                 importLoaders: 2,
+            //                 // modules: true,
+            //             }
+            //         },
+            //         'sass-loader',
+            //         'postcss-loader'
+            //     ]
+            // },
             {
-                test: /\.(css|scss)$/,
+                test: /\.css$/,
                 use: [ 
                     'style-loader', 
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 2,
-                            // modules: true,
-                        }
-                    },
-                    'sass-loader',
-                    'postcss-loader'
+                    'css-loader',
                 ]
             },
         ]
     },
     output: {
-        publicPath: "/",    // 在打包生成的目录文件前都加一个根路径
+        // publicPath: "/",    // 在打包生成的目录文件前都加一个根路径
         filename: "[name].js",
         path:   path.resolve(__dirname, "dist")   // path后面跟着绝对路径 返回的是D:\前端学习\webpack\webpack_demo\bundle
     },
@@ -77,7 +85,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         // new HotModuleReplacementPlugin()    // 控制热模块加载
     ],
-    optimization: {
-        usedExports: true
-    }
+    // optimization: {
+    //     usedExports: true
+    // }
 }

@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: { 
         main: "./src/index.js",
-       
+        // content: './src/content.js'
     },
     module: {
         rules: [
@@ -70,11 +70,10 @@ module.exports = {
             chunks: 'all',
             minSize: 20000, // 20KB大小
             minRemainingSize: 0,
-            minChunks: 1,
+            minChunks: 1,   // 当一个模块用了多少次之后才对其进行代码分割,minChunks = 1,使用1次就进行
             maxAsyncRequests: 30,
             maxInitialRequests: 30,
             enforceSizeThreshold: 50000,
-            name: true,
             cacheGroups: {
                 defaultVendors: {   
                     test: /[\\/]node_modules[\\/]/,
@@ -85,7 +84,8 @@ module.exports = {
                 default: {
                     minChunks: 2,
                     priority: -20,
-                    reuseExistingChunk: true
+                    reuseExistingChunk: true,
+                    filename: 'common.js'
                 }
             },
         }

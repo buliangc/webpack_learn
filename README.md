@@ -135,6 +135,17 @@ main.js
 [异步代码使用babel]：plugins中配置dynamic-import-webpack
 chunk : all, async 和 initial 全部, 异步, 同步 
 minsize: 引入的库的最小值, 大于xxx, 则做代码分割
-//cacheGroups 判断规则
+minChunks: 一个模块引用了多少次之后才对其进行代码分割,默认使用一次就进行代码分割。
+cacheGroups 缓存分组,分别进行判断
 同步逻辑的代码分割
 在splitChunks中,chunks:'all',表示对同步代码也打包; 接下来到cacheGroups的vendors,里面的test会检测引入的库是否在node_modules中。于是webpack就会单独将其打包到vendor组里面
+
+# Lazy Loading懒加载, Chunk是什么
+指的是import语法,需要某些模块的时候,再去加载该模块; 而不是一次性将代码全部加载到页面上,浪费性能。
+
+# 打包分析, preLoading,
+code Splitting 的 bundle analysis 打包分析,在script中加上: --profile --json > stats.json , 会生成一个stats.json文件,可以放在[https://github.com/webpack/analyse]去进行分析。
+[性能提升思考]：考虑缓存对页面性能的提升是有限的, 更应该考虑如何让页面加载的js文件代码的利用率最高。有些交互之后才利用到的代码, 完全可以写在异步组件之中, 通过懒加载的形式将该模块的代码逻辑加载进来。懒加载可能会牺牲一些用户体验, 这时候就可以通过prefetch或者preload, 解决这种问题。使用魔法注释/* webpackPrefetch: true */
+prefetch: 等待核心的业务代码加载完成,空闲时间再去加载那些需要懒加载的js文件 preload: 与核心代码同时加载
+[查看页面性能]：ctrl+Shift+P, 输入coverage, 显示页面代码利用率。当加载首屏页面的时候, 登录框可以先不加载, 而是首屏加载完, 带宽释放后, 主动下载登录框模块, 这样既节约了用户点击登录后, 等待登录框的时间, 是最佳的优化方式。
+
